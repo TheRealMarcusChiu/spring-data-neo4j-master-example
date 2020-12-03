@@ -1,30 +1,27 @@
 package com.neo4j.example.springdataneo4jintroapp.domainClasses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.Property;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NodeEntity
 public class Person {
     @Id
     @GeneratedValue
     private Long id;
 
+    @Property("name")
     private String name;
     @Property("born")
     private int birthyear;
 
     @JsonIgnoreProperties("person")
-    @Relationship(type = "ACTED_IN")
-    private List<Role> actedIn = new ArrayList<>();
+    private List<Role> roles = new ArrayList<>();
 
-    @JsonIgnoreProperties({"actors", "directors"})
-    @Relationship(type = "DIRECTED")
-    private List<Movie> directed = new ArrayList<>();
+    @JsonIgnoreProperties({"directors", "actors"})
+    private List<Movie> movies = new ArrayList<>();
 
     public Person() {
     }
@@ -52,11 +49,11 @@ public class Person {
         this.birthyear = birthyear;
     }
 
-    public List<Role> getActedIn() { return actedIn; }
+    public List<Role> getRoles() { return roles; }
 
-    public void setActedIn(List<Role> movies) { this.actedIn = movies; }
+    public void setRoles(List<Role> roles) { this.roles = roles; }
 
-    public List<Movie> getDirected() { return directed; }
+    public List<Movie> getMovies() { return movies; }
 
-    public void setDirected(List<Movie> directed) { this.directed = directed; }
+    public void setMovies(List<Movie> movies) { this.movies = movies; }
 }

@@ -14,7 +14,9 @@ public class Movie {
     @GeneratedValue
     private Long id;
 
+    @Property("title")
     private String title;
+    @Property("released")
     private int released;
     @Property("tagline")
     private String description;
