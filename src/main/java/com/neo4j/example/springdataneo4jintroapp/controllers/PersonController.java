@@ -1,12 +1,9 @@
 package com.neo4j.example.springdataneo4jintroapp.controllers;
 
-import com.neo4j.example.springdataneo4jintroapp.domainClasses.Movie;
-import com.neo4j.example.springdataneo4jintroapp.domainClasses.Person;
-import com.neo4j.example.springdataneo4jintroapp.repositories.PersonRepository;
+import com.neo4j.example.springdataneo4jintroapp.model.Person;
+import com.neo4j.example.springdataneo4jintroapp.repository.PersonRepository;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -38,18 +35,18 @@ public class PersonController {
         return persons;
     }
 
-    @PostConstruct
-    public void test() {
-        Person p = new Person();
-        p.setName("Jelly Bean");
-        List<Movie> movies = new ArrayList<>();
-        Movie movie = new Movie();
-        movie.setTitle("Eatery");
-        List<Person> directors = new ArrayList<>();
-        directors.add(p);
-        movie.setDirectors(directors);
-        movies.add(movie);
-        p.setMovies(movies);
-        personRepository.save(p);
-    }
+//    @PostConstruct
+//    public void test() {
+//        Person p = new Person();
+//        p.setName("Jelly Bean");
+//        List<Movie> movies = new ArrayList<>();
+//        Movie movie = new Movie();
+//        movie.setTitle("Eatery");
+//        List<Person> directors = new ArrayList<>();
+//        directors.add(p);
+//        movie.setDirectors(directors);
+//        movies.add(movie);
+//        p.setMovies(movies);
+//        personRepository.save(p);
+//    }
 }

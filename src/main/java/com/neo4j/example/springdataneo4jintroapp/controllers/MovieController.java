@@ -1,7 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp.controllers;
 
-import com.neo4j.example.springdataneo4jintroapp.domainClasses.Movie;
-import com.neo4j.example.springdataneo4jintroapp.repositories.MovieRepository;
+import com.neo4j.example.springdataneo4jintroapp.model.Movie;
+import com.neo4j.example.springdataneo4jintroapp.repository.MovieRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
