@@ -1,6 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp;
 
 import com.neo4j.example.springdataneo4jintroapp.controllers.DefaultController;
+import com.neo4j.example.springdataneo4jintroapp.model2.Service;
 import com.neo4j.example.springdataneo4jintroapp.repository2.ApplicationModuleRepository;
 import com.neo4j.example.springdataneo4jintroapp.repository2.ServiceRepository;
 import com.neo4j.example.springdataneo4jintroapp.service.ServiceService;
@@ -9,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.annotation.PostConstruct;
 
 @Component
 @EnableTransactionManagement
@@ -30,6 +33,23 @@ public class SpringDataNeo4jIntroAppApplication {
 
 	@Autowired
 	ServiceService serviceService;
+
+	@PostConstruct
+	public void tester() {
+		Service service1 = new Service();
+		service1.setServiceName("service-name-1");
+		serviceRepository.save(service1);
+
+		Service service2 = new Service();
+		service2.setServiceName("service-name-2");
+		service2.setTest(false);
+		serviceRepository.save(service2);
+
+		Service service3 = new Service();
+		service3.setServiceName("service-name-3");
+		service3.setTest(true);
+		serviceRepository.save(service3);
+	}
 
 //	@PostConstruct
 //	public void tester() {

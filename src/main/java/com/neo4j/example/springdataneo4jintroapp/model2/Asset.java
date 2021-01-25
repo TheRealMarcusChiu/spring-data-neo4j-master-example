@@ -2,9 +2,7 @@ package com.neo4j.example.springdataneo4jintroapp.model2;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.typeconversion.Convert;
 import org.neo4j.ogm.id.UuidStrategy;
-import org.neo4j.ogm.typeconversion.UuidStringConverter;
 
 public class Asset {
 
