@@ -2,15 +2,19 @@ package com.neo4j.example.springdataneo4jintroapp.model2;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.id.UuidStrategy;
 
-public class Asset {
+public class Asset<T extends Asset> {
 
     public Long id;
 
     @Id
     @GeneratedValue(strategy = UuidStrategy.class)
     private String uuid;
+
+    @Relationship(type = "IS_OWNED_BY")
+    private T owner;
 
 //    @Index(indexName="productId", unique=true, indexType=IndexType.SIMPLE)
     String name;
@@ -23,4 +27,11 @@ public class Asset {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    public void setOwner(T owner) {
+        this.owner = owner;
+    }
+    public T getOwner() {
+        return owner;
+    }
 }
