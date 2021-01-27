@@ -1,7 +1,5 @@
 package com.neo4j.example.springdataneo4jintroapp.converters;
 
-import com.neo4j.example.springdataneo4jintroapp.model2.CompositeId;
-
 import java.io.Serializable;
 import java.util.Objects;
 
