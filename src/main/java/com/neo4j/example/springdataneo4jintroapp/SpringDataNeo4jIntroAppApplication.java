@@ -1,7 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp;
 
 import com.neo4j.example.springdataneo4jintroapp.config.Neo4jSessionFactory;
-import com.neo4j.example.springdataneo4jintroapp.controllers.DefaultController;
 import com.neo4j.example.springdataneo4jintroapp.converters.Location;
 import com.neo4j.example.springdataneo4jintroapp.model.Person;
 import com.neo4j.example.springdataneo4jintroapp.model2.ApplicationModule;
@@ -11,9 +10,7 @@ import com.neo4j.example.springdataneo4jintroapp.repository.PersonRepository;
 import com.neo4j.example.springdataneo4jintroapp.repository.RoleRepository;
 import com.neo4j.example.springdataneo4jintroapp.repository2.*;
 import com.neo4j.example.springdataneo4jintroapp.service.ServiceService;
-import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.session.Session;
-import org.neo4j.ogm.session.SessionFactory;
 import org.neo4j.ogm.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
