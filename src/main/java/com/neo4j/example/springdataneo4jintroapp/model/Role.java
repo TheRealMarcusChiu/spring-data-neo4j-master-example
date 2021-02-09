@@ -1,6 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 import org.neo4j.ogm.annotation.*;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Role {
     @GeneratedValue
     private Long id;
 
-    private List<String> roles = new ArrayList<>();
+    private String custom;
 
     @StartNode
     @JsonIgnoreProperties({"actedIn", "directed"})
@@ -25,6 +26,13 @@ public class Role {
     public Role() {
     }
 
+    public void setCustom(String custom) {
+        this.custom = custom;
+    }
+    public String getCustom() {
+        return custom;
+    }
+
     public Role(Person person, Movie movie) {
         this.person = person;
         this.movie = movie;
@@ -33,8 +41,6 @@ public class Role {
     public Long getId() {
         return id;
     }
-
-    public List<String> getRoles() { return roles; }
 
     public Person getPerson() {
         return person;

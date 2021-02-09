@@ -17,7 +17,7 @@ public class Asset<T extends Asset> {
     private T owner;
 
 //    @Index(indexName="productId", unique=true, indexType=IndexType.SIMPLE)
-    String name;
+    private String name;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

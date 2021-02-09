@@ -6,9 +6,13 @@ import java.util.Optional;
 
 public interface ServiceRepository extends AssetRepository<Service, String> {
 
-    Optional<Service> findByName(String name);
+    default <S extends Service> Optional<S> retrieve(S s) {
+        return (Optional<S>) Optional.ofNullable(findByUuid(s.getUuid())
+                .orElseGet(() -> findByName(s.getName())
+                .orElse(null)));
+    }
 
-    Optional<Service> findByServiceName(String serviceName);
+    <S extends Service> Optional<S> findByServiceName(String serviceName);
 
 //    @Query("MERGE (e:Service {name:$s.name}) SET e.extra = $s.extra")
 //    void upsert(@Param("s") Service s);

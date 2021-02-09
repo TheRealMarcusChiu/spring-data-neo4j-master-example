@@ -2,10 +2,13 @@ package com.neo4j.example.springdataneo4jintroapp.model2;
 
 import com.neo4j.example.springdataneo4jintroapp.converters.Location;
 import com.neo4j.example.springdataneo4jintroapp.converters.LocationConverter;
+import com.neo4j.example.springdataneo4jintroapp.model2.relationship.Gender;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.typeconversion.Convert;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
@@ -18,14 +21,21 @@ public class Service extends Asset<ApplicationModule> {
     private String serviceName;
 
     @Valid
-    @Relationship("HAS")
+    @Relationship(ModelType.Constant.REQUEST)
     private Service service;
-
-    private String test2;
 
     @Convert(LocationConverter.class)
     private Location location;
 
+    @Enumerated(EnumType.STRING)
+    private ModelType type;
+
+//    @Relationship(ModelType.Constant.RESPONSE)
+    private SubService subService;
+
+    public Boolean getTest() {
+        return test;
+    }
     public void setTest(final Boolean test) {
         this.test = test;
     }
@@ -41,5 +51,36 @@ public class Service extends Asset<ApplicationModule> {
     }
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void setModelType(ModelType type) {
+        this.type = type;
+    }
+    public ModelType getModelType() {
+        return type;
+    }
+
+    public static enum ModelType {
+        REQUEST(Constant.REQUEST),
+        RESPONSE(Constant.RESPONSE);
+        ModelType(String str) {
+        }
+        public static class Constant {
+            public static final String REQUEST = "REQUEST";
+            public static final String RESPONSE = "RESPONSE";
+        }
+    }
+
+    public SubService getSubService() {
+        return subService;
+    }
+    public void setSubService(SubService subService) {
+        this.subService = subService;
+    }
+
+    public static void main(String args[]) {
+        var male = Gender.MALE;
+        System.out.println(Gender.MALE.name());
+        System.out.println(ModelType.REQUEST.toString());
     }
 }

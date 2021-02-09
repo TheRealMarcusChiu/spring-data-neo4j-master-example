@@ -1,12 +1,10 @@
 package com.neo4j.example.springdataneo4jintroapp.controllers;
 
-import com.neo4j.example.springdataneo4jintroapp.SpringDataNeo4jIntroAppApplication;
 import com.neo4j.example.springdataneo4jintroapp.model2.ApplicationModule;
 import com.neo4j.example.springdataneo4jintroapp.model2.Service;
 import com.neo4j.example.springdataneo4jintroapp.repository2.ApplicationModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
@@ -15,13 +13,13 @@ import java.util.Objects;
 @RestController
 public class DefaultController {
 
-    @Autowired
-    SpringDataNeo4jIntroAppApplication springDataNeo4jIntroAppApplication;
+//    @Autowired
+//    SpringDataNeo4jIntroAppApplication springDataNeo4jIntroAppApplication;
 
-    @GetMapping("/trigger")
-    public void test() {
-        springDataNeo4jIntroAppApplication.test();
-    }
+//    @GetMapping("/trigger")
+//    public void test() {
+//        springDataNeo4jIntroAppApplication.test();
+//    }
 
     public static void main(String[] args) {
         Integer[] ints = new Integer[10];

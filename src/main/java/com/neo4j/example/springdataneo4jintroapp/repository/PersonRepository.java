@@ -3,9 +3,11 @@ package com.neo4j.example.springdataneo4jintroapp.repository;
 import com.neo4j.example.springdataneo4jintroapp.model.Person;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PersonRepository extends Neo4jRepository<Person, Long> {
 
     Person getPersonByName(String name);

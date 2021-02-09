@@ -17,6 +17,9 @@ public class Person {
     @Property("born")
     private int birthyear;
 
+    @Relationship(type="ACTED_IN")
+    private Role test;
+
     @JsonIgnoreProperties("person")
     private List<Role> roles = new ArrayList<>();
 
@@ -31,6 +34,9 @@ public class Person {
         this.birthyear = birthyear;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }
@@ -49,11 +55,19 @@ public class Person {
         this.birthyear = birthyear;
     }
 
-    public List<Role> getRoles() { return roles; }
+    public Role getTest() {
+        return test;
+    }
+    public void setTest(Role test) {
+        this.test = test;
+    }
 
+    public List<Role> getRoles() { return roles; }
     public void setRoles(List<Role> roles) { this.roles = roles; }
+    public void addRole(Role role) {
+        roles.add(role);
+    }
 
     public List<Movie> getMovies() { return movies; }
-
     public void setMovies(List<Movie> movies) { this.movies = movies; }
 }

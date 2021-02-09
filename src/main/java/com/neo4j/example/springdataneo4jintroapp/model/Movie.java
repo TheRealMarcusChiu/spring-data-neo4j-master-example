@@ -2,6 +2,7 @@ package com.neo4j.example.springdataneo4jintroapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.neo4j.ogm.annotation.*;
+import org.springframework.data.annotation.CreatedBy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,9 @@ public class Movie {
     public List<Role> getActors() { return actors; }
 
     public void setActors(List<Role> actors) { this.actors = actors; }
+    public void addActors(Role role) {
+        actors.add(role);
+    }
 
     public List<Person> getDirectors() { return directors; }
 
