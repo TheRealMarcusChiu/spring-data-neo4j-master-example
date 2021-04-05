@@ -21,6 +21,11 @@ public class ServiceService {
      * @param service Service
      */
     public void test(@Valid Service service) {
+        System.out.println("to validate");
+        validated(service);
+    }
+
+    private void validated(@Valid Service service) {
         System.out.println("validated");
     }
 

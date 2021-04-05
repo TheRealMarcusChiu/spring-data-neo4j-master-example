@@ -20,27 +20,32 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-neo4j</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-neo4j</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 <!--		<dependency>-->
-<!--			<groupId>org.springframework.data</groupId>-->
-<!--			<artifactId>spring-data-neo4j</artifactId>-->
-<!--			<version>6.0.2</version>-->
-<!--			<scope>compile</scope>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<artifactId>jcl-over-slf4j</artifactId>-->
-<!--					<groupId>org.slf4j</groupId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
+<!--			<groupId>org.neo4j.driver</groupId>-->
+<!--			<artifactId>neo4j-java-driver-spring-boot-starter</artifactId>-->
+<!--			<version>4.1.1.1</version>-->
 <!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-neo4j</artifactId>
+			<version>5.1.12.RELEASE</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>jcl-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

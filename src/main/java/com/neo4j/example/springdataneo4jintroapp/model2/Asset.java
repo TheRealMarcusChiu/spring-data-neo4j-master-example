@@ -2,9 +2,11 @@ package com.neo4j.example.springdataneo4jintroapp.model2;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.id.UuidStrategy;
 
+@NodeEntity
 public class Asset<T extends Asset> {
 
     public Long id;
