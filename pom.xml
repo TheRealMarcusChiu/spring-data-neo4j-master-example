@@ -20,33 +20,55 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-starter-data-neo4j</artifactId>-->
 <!--		</dependency>-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-neo4j</artifactId>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.data</groupId>-->
+<!--			<artifactId>spring-data-neo4j</artifactId>-->
+<!--			<version>5.1.12.RELEASE</version>-->
+<!--			<scope>compile</scope>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<artifactId>jcl-over-slf4j</artifactId>-->
+<!--					<groupId>org.slf4j</groupId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+
+		<!-- NEO4J DRIVERS -->
 <!--		<dependency>-->
 <!--			<groupId>org.neo4j.driver</groupId>-->
 <!--			<artifactId>neo4j-java-driver-spring-boot-starter</artifactId>-->
 <!--			<version>4.1.1.1</version>-->
 <!--		</dependency>-->
-
+		<!-- add this dependency if you want to use the embedded driver -->
+<!--		<dependency>-->
+<!--			<groupId>org.neo4j</groupId>-->
+<!--			<artifactId>neo4j-ogm-embedded-driver</artifactId>-->
+<!--		</dependency>-->
+		<!-- add this dependency if you want to use the HTTP driver -->
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-neo4j</artifactId>
-			<version>5.1.12.RELEASE</version>
-			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>jcl-over-slf4j</artifactId>
-					<groupId>org.slf4j</groupId>
-				</exclusion>
-			</exclusions>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-ogm-http-driver</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>30.1-jre</version>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

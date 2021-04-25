@@ -5,7 +5,6 @@ import com.neo4j.example.springdataneo4jintroapp.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.neo4j.DataNeo4jTest;
-import org.springframework.boot.test.context.SpringBootTest;
 
 @DataNeo4jTest
 public class AppTest {

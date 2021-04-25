@@ -2,7 +2,6 @@ package com.neo4j.example.springdataneo4jintroapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.neo4j.ogm.annotation.*;
-import org.springframework.data.annotation.CreatedBy;
 
 import java.util.ArrayList;
 import java.util.List;

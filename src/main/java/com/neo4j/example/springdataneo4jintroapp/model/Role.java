@@ -1,11 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
 import org.neo4j.ogm.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RelationshipEntity(type = "ACTED_IN")
 public class Role {

@@ -6,10 +6,10 @@ import org.neo4j.ogm.config.Configuration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ConfigurationTest {
+class ConfigurationTest {
 
     @Test
-    public void shouldConfigureProgrammatically() {
+    void shouldConfigureProgrammatically() {
         Configuration.Builder builder = new Configuration.Builder();
         builder.autoIndex("assert");
         builder.generatedIndexesOutputDir("dir");

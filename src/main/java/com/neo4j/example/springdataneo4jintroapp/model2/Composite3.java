@@ -3,9 +3,6 @@ package com.neo4j.example.springdataneo4jintroapp.model2;
 import org.neo4j.ogm.annotation.CompositeIndex;
 import org.neo4j.ogm.annotation.NodeEntity;
 
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-
 @NodeEntity
 @CompositeIndex(value= {"accountNumber","accountType"}, unique=true)
 public class Composite3 {

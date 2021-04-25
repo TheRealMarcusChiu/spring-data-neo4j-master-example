@@ -1,12 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp.config;
 
-import org.neo4j.driver.AuthTokens;
-import org.neo4j.driver.Driver;
-import org.neo4j.driver.GraphDatabase;
-import org.neo4j.driver.Result;
-import org.neo4j.driver.Session;
-import org.neo4j.driver.Transaction;
-import org.neo4j.driver.TransactionWork;
+import org.neo4j.driver.*;
 
 import static org.neo4j.driver.Values.parameters;
 

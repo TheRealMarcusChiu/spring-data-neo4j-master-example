@@ -1,9 +1,5 @@
 package com.neo4j.example.springdataneo4jintroapp;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Optional;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,7 +7,6 @@ import org.neo4j.harness.ServerControls;
 import org.neo4j.harness.TestServerBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.neo4j.DataNeo4jTest;
-//import org.springframework.data.neo4j.core.Neo4jClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -40,7 +35,7 @@ class MovieRepositoryTest {
     }
 
     @Test
-    public void findSomethingShouldWork(@Autowired ApplicationContext applicationContext) {
+    void findSomethingShouldWork(@Autowired ApplicationContext applicationContext) {
         for (String name : applicationContext.getBeanDefinitionNames()) {
             System.out.println(name);
         }

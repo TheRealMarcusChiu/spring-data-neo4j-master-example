@@ -2,7 +2,10 @@ package com.neo4j.example.springdataneo4jintroapp.controllers;
 
 import com.neo4j.example.springdataneo4jintroapp.model.Person;
 import com.neo4j.example.springdataneo4jintroapp.repository.PersonRepository;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
