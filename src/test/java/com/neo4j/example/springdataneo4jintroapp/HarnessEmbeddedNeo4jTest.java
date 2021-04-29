@@ -12,7 +12,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
 @DataNeo4jTest
-class MovieRepositoryTest {
+class HarnessEmbeddedNeo4jTest {
 
     private static ServerControls embeddedDatabaseServer;
 
