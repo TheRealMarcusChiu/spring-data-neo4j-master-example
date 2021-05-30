@@ -1,5 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp;
 
+import com.neo4j.example.springdataneo4jintroapp.model3.Api;
 import com.neo4j.example.springdataneo4jintroapp.model3.Application;
 import com.neo4j.example.springdataneo4jintroapp.repository3.ApiRepository;
 import com.neo4j.example.springdataneo4jintroapp.repository3.ApplicationModuleRepository;
@@ -10,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.mapping.PersistentEntity;
+import org.springframework.data.mapping.PersistentProperty;
+import org.springframework.data.mapping.PersistentPropertyAccessor;
+import org.springframework.data.neo4j.mapping.Neo4jMappingContext;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -34,25 +39,40 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 
 	@Autowired
 	SessionFactory sessionFactory;
+	@Autowired
+	Neo4jMappingContext mappingContext;
 
 	@Override
 	public void run(String... args) {
-		List<Class> supportedTypes = Arrays.asList(String.class, Number.class);
-		Set<Field> set = new HashSet<>();
+		Api api = new Api(); //....; // the domain model instance
+		api.setName("Marcus");
+		PersistentEntity entity = mappingContext.getPersistentEntity(Api.class); //....; the PersistentEntity for the class of the domain model instance
+		PersistentProperty property = entity.getPersistentProperty("name"); // get the name property
+		PersistentPropertyAccessor accessor = entity.getPropertyAccessor(api);
+		accessor.setProperty(property, "someValue"); // set the name property to someValue
 
-		Class clazz = Application.class;
-		do {
-			Field[] fields = clazz.getDeclaredFields();
-			set.addAll(Arrays.asList(fields));
-			clazz = clazz.getSuperclass();
-		} while (clazz != null);
+		System.out.println(accessor.getProperty(property).toString());
 
-		set = set.stream()
-				.filter(f -> f.getAnnotation(Transient.class) == null)
-				.filter(f -> supportedTypes.contains(f.getType()))
-				.collect(Collectors.toSet());
 
-		set.forEach(f -> System.out.println(f.getName()));
+//		List<Class> supportedTypes = Arrays.asList(String.class, Number.class);
+//		Set<Field> set = new HashSet<>();
+//
+//		Class clazz = Application.class;
+//		do {
+//			Field[] fields = clazz.getDeclaredFields();
+//			set.addAll(Arrays.asList(fields));
+//			clazz = clazz.getSuperclass();
+//		} while (clazz != null);
+//
+//		set = set.stream()
+//				.filter(f -> f.getAnnotation(Transient.class) == null)
+//				.filter(f -> supportedTypes.contains(f.getType()))
+//				.collect(Collectors.toSet());
+//
+//		set.forEach(f -> System.out.println(f.getName()));
+
+
+
 //		ObjectMapper om = new ObjectMapper();
 //		om.writeValueAsString(new Application());
 

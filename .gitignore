@@ -32,3 +32,4 @@ build/
 
 # DS Store
 .DS_Store
+generated_indexes.cql
