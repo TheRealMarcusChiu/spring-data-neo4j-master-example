@@ -5,5 +5,9 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ApiRepository extends Neo4jRepository<Api, String> {
+public interface ApiRepository extends Neo4jRepository<Api, String>, CustomRepository {
+
+    default String tester(String input) {
+        return someCustomMethod(input);
+    }
 }
