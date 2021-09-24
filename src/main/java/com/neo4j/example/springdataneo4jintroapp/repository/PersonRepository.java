@@ -14,6 +14,7 @@ public interface PersonRepository extends Neo4jRepository<Person, Long> {
 
     Iterable<Person> findPersonByNameLike(String name);
 
-    @Query("MATCH (am:Movie)<-[ai:ACTED_IN]-(p:Person)-[d:DIRECTED]->(dm:Movie) return p, collect(ai), collect(d), collect(am), collect(dm)")
+    @Query("MATCH (p1:Prop)<-[h1:HAS]-(am:Movie)<-[ai:ACTED_IN]-(p:Person)-[d:DIRECTED]->(dm:Movie)-[h2:HAS]->(p2:Prop)" +
+            " return p, collect(ai), collect(d), collect(h1), collect(h2), collect(am), collect(dm), collect(p1), collect(p2)")
     List<Person> getPersonsWhoActAndDirect();
 }

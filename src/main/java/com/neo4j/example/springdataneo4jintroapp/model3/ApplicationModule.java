@@ -22,5 +22,5 @@ public class ApplicationModule extends Asset {
     @Relationship("REL_1")
     private List<Relationship1> relationship1List = new ArrayList<>();
     @Relationship("REL_2")
-    private List<Relationship2> relationship2List = new ArrayList<>();
+    private Relationship2 relationship2List; // = new ArrayList<>();
 }

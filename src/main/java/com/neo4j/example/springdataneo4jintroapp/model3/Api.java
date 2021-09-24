@@ -19,5 +19,5 @@ public class Api extends Asset {
     @Relationship(type = "REL_1", direction = INCOMING)
     private List<Relationship1> relationship1List = new ArrayList<>();
     @Relationship(type = "REL_2", direction = INCOMING)
-    private List<Relationship2> relationship2List = new ArrayList<>();
+    private Relationship2 relationship2; // = new ArrayList<>();
 }

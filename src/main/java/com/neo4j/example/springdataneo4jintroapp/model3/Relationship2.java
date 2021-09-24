@@ -14,4 +14,14 @@ public class Relationship2 extends Asset {
     private ApplicationModule applicationModule;
     @EndNode
     private Api api;
+
+    public void setApplicationModule(ApplicationModule applicationModule) {
+        this.applicationModule = applicationModule;
+        applicationModule.setRelationship2List(this);
+    }
+
+    public void setApi(Api api) {
+        this.api = api;
+        api.setRelationship2(this);
+    }
 }

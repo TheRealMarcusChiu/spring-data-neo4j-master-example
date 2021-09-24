@@ -1,6 +1,8 @@
 package com.neo4j.example.springdataneo4jintroapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.*;
 
 import java.util.ArrayList;
@@ -8,6 +10,8 @@ import java.util.List;
 
 import static org.neo4j.ogm.annotation.Relationship.INCOMING;
 
+@Data
+@NoArgsConstructor
 @NodeEntity
 public class Movie {
     @Id
@@ -29,47 +33,6 @@ public class Movie {
     @Relationship(type = "DIRECTED", direction = INCOMING)
     private List<Person> directors = new ArrayList<>();
 
-    public Movie() {
-    }
-
-    public Movie(String title, int released, String tagline) {
-        this.title = title;
-        this.released = released;
-        this.description = tagline;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getReleased() {
-        return released;
-    }
-
-    public void setReleased(int released) {
-        this.released = released;
-    }
-
-    public String getDescription() { return description; }
-
-    public void setDescription(String description) { this.description = description; }
-
-    public List<Role> getActors() { return actors; }
-
-    public void setActors(List<Role> actors) { this.actors = actors; }
-    public void addActors(Role role) {
-        actors.add(role);
-    }
-
-    public List<Person> getDirectors() { return directors; }
-
-    public void setDirectors(List<Person> directors) { this.directors = directors; }
+    @Relationship(type = "HAS", direction = "OUTGOING")
+    private List<HasRelationship> hasRelationships;
 }

@@ -1,8 +1,12 @@
 package com.neo4j.example.springdataneo4jintroapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.*;
 
+@Data
+@NoArgsConstructor
 @RelationshipEntity(type = "ACTED_IN")
 public class Role {
     @Id
@@ -18,31 +22,4 @@ public class Role {
     @EndNode
     @JsonIgnoreProperties({"actors", "directors"})
     private Movie movie;
-
-    public Role() {
-    }
-
-    public void setCustom(String custom) {
-        this.custom = custom;
-    }
-    public String getCustom() {
-        return custom;
-    }
-
-    public Role(Person person, Movie movie) {
-        this.person = person;
-        this.movie = movie;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public Movie getMovie() {
-        return movie;
-    }
 }

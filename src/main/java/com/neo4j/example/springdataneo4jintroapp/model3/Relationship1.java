@@ -15,6 +15,8 @@ public class Relationship1 extends Asset {
     @EndNode
     private Api api;
 
+    private Long ciaVersion;
+
     public void setApplicationModule(ApplicationModule applicationModule) {
         this.applicationModule = applicationModule;
         applicationModule.getRelationship1List().add(this);
