@@ -3,6 +3,7 @@ package com.neo4j.example.springdataneo4jintroapp.versioning.model.edges;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Entity;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.RelationshipAsset;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.State;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import org.neo4j.ogm.annotation.Transient;
 @SuperBuilder
 @NoArgsConstructor
 @RelationshipEntity("HAS_STATE")
+@AllArgsConstructor
 public class HasStateRelationship extends RelationshipAsset {
     @StartNode
     @Transient

@@ -3,6 +3,7 @@ package com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.State;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.CurrentRelationship;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.HasStateRelationship;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,9 +15,10 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NodeEntity
+@NodeEntity("Person")
 @SuperBuilder
-@NoArgsConstructor
+//@NoArgsConstructor
+@AllArgsConstructor
 public class PersonEntity extends State {
     private String firstName;
     private String middleName;
