@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.id.UuidStrategy;
 
 import java.io.Serializable;
 
@@ -13,11 +14,11 @@ import java.io.Serializable;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Asset implements Serializable {
+public abstract class Asset implements Serializable {
 
     private Long id;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = UuidStrategy.class)
     private String uuid;
 }

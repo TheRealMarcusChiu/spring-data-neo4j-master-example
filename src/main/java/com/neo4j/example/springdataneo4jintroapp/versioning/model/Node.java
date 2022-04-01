@@ -10,5 +10,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 //@NoArgsConstructor
 @AllArgsConstructor
-public class Entity extends Node {
+public abstract class Node extends Asset {
 }
