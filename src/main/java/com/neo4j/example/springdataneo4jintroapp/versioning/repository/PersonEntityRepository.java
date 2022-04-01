@@ -5,5 +5,5 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends Neo4jRepository<PersonEntity, String> {
+public interface PersonEntityRepository extends Neo4jRepository<PersonEntity, String> {
 }

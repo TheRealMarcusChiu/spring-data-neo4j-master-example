@@ -6,10 +6,12 @@ import lombok.experimental.SuperBuilder;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 
+import java.io.Serializable;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
-public class Asset {
+public class Asset implements Serializable {
 
     private Long id;
 
