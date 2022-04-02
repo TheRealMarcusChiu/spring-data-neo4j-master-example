@@ -13,13 +13,13 @@ import org.neo4j.ogm.annotation.Relationship;
 import java.util.ArrayList;
 import java.util.List;
 
+@NodeEntity("Person")
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@NodeEntity("Person")
-@EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Person extends Entity {
 
     @FabricKey(priority = FabricKey.Priority.DEFAULT)

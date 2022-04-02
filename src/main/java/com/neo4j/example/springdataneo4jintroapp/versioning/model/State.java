@@ -8,8 +8,9 @@ import lombok.experimental.SuperBuilder;
 
 @Data
 @SuperBuilder
+//@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class State extends Node {
 }

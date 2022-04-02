@@ -25,7 +25,7 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        Person p = Person.builder().uuid("turkeylegs").build();
+        Person p = Person.builder().uuid("turkeylegs").firstName("jiggly puff").build();
 //        PersonState s = PersonState.builder().build();
 //        CurrentRelationship c = CurrentRelationship.builder()
 //                .startNode(p)
@@ -35,8 +35,8 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 //        s.setCurrentRelationship(c);
 //        personEntityRepository.save(p);
 
-//        Person p0 = personRepository.save(p);
-        Optional<Person> p1 = personRepository.tester("3hello");
+        Person p0 = personRepository.save(p);
+        Optional<Person> p1 = personRepository.tester("turkeylegs");
 //        Optional<Person> p2 = personRepository.get(p);
 //        currentRelationshipRepository.get(null);
 //
