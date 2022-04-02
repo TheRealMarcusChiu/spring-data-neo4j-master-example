@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
-//@NoArgsConstructor
 @AllArgsConstructor
 public abstract class Node extends Asset {
 }

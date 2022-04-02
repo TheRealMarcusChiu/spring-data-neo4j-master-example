@@ -1,12 +1,12 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.model;
 
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.FabricKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.id.UuidStrategy;
 
 import java.io.Serializable;
 
@@ -15,10 +15,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class Asset implements Serializable {
-
+    @Id
+    @GeneratedValue
     private Long id;
 
-    @Id
-    @GeneratedValue(strategy = UuidStrategy.class)
+    @FabricKey(priority = FabricKey.Priority.HIGHEST)
     private String uuid;
 }
