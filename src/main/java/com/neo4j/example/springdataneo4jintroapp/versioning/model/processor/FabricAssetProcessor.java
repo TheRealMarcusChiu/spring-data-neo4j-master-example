@@ -1,7 +1,10 @@
-package com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service;
+package com.neo4j.example.springdataneo4jintroapp.versioning.model.processor;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.FabricKey;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricKeyGroupValue.FabricKeyValue;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.Asset;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.Edge;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.Node;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricKeyGroupValue.FabricKeyValue;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.annotations.FabricKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -15,20 +18,21 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
-public class FabricAssetService {
+public class FabricAssetProcessor {
 
-    private final Map<Class<?>, List<FabricKeyGroup>> keyGroupsMap = new HashMap<>();
-    private final Map<Class<?>, String> nodeTopLevelLabels = new HashMap<>();
+    private final Map<Class<? extends Edge>, List<FabricKeyGroup>> edgeKeyGroupsMap = new HashMap<>();
+    private final Map<Class<? extends Node>, List<FabricKeyGroup>> nodeKeyGroupsMap = new HashMap<>();
+    private final Map<Class<? extends Node>, String> nodeTopLevelLabels = new HashMap<>();
 
-    public FabricAssetService(final Set<@NonNull Class<?>> nodeClasses,
-                              final Set<@NonNull Class<?>> edgeClasses) {
+    public FabricAssetProcessor(final Set<@NonNull Class<? extends Node>> nodeClasses,
+                                final Set<@NonNull Class<? extends Edge>> edgeClasses) {
         nodeClasses.forEach(this::processNodeClass);
         edgeClasses.forEach(this::processEdgeClass);
     }
 
     public List<FabricKeyGroupValue> getKeyGroupsValues(final Object object, final boolean returnOnlyGroupsWithNonNullValues) {
         if (object != null) {
-            List<FabricKeyGroup> keyGroups = keyGroupsMap.get(object.getClass());
+            List<FabricKeyGroup> keyGroups = nodeKeyGroupsMap.get(object.getClass());
             if (keyGroups != null) {
                 return getKeyGroupsValues(keyGroups, object, returnOnlyGroupsWithNonNullValues);
             }
@@ -43,13 +47,13 @@ public class FabricAssetService {
         return nodeTopLevelLabels.get(clazz);
     }
 
-    public void processNodeClass(final @NonNull Class<?> clazz) {
-        keyGroupsMap.put(clazz, initializeKeyGroups(clazz));
+    public void processNodeClass(final @NonNull Class<? extends Node> clazz) {
+        nodeKeyGroupsMap.put(clazz, initializeKeyGroups(clazz));
         nodeTopLevelLabels.put(clazz, initializeNodeLabel(clazz));
     }
 
-    public void processEdgeClass(final @NonNull Class<?> clazz) {
-        keyGroupsMap.put(clazz, initializeKeyGroups(clazz));
+    public void processEdgeClass(final @NonNull Class<? extends Edge> clazz) {
+        edgeKeyGroupsMap.put(clazz, initializeKeyGroups(clazz));
     }
 
     private List<FabricKeyGroupValue> getKeyGroupsValues(final List<FabricKeyGroup> keyGroups, final Object object, final boolean returnOnlyGroupsWithNonNullValues) {
@@ -88,7 +92,7 @@ public class FabricAssetService {
         }
     }
 
-    private List<FabricKeyGroup> initializeKeyGroups(final Class<?> clazz) {
+    private List<FabricKeyGroup> initializeKeyGroups(final @NonNull Class<? extends Asset> clazz) {
         Map<Integer, List<Field>> fabricKeyFields = getAllFields(clazz).stream()
                 .filter(field -> field.isAnnotationPresent(FabricKey.class))
                 .peek(field -> field.setAccessible(true))
@@ -99,7 +103,7 @@ public class FabricAssetService {
                 .collect(Collectors.toList());
     }
 
-    private List<Field> getAllFields(@NonNull Class<?> clazz) {
+    private List<Field> getAllFields(final @NonNull Class<? extends Asset> clazz) {
         List<Field> fields = new ArrayList<>();
         ReflectionUtils.doWithFields(clazz, fields::add);
         return fields;

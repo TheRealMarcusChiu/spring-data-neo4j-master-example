@@ -1,8 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.base;
 
-import java.io.Serializable;
-
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricAssetService;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricAssetProcessor;
 import org.neo4j.ogm.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mapping.context.MappingContext;
@@ -11,11 +9,13 @@ import org.springframework.data.neo4j.repository.support.Neo4jRepositoryFactoryB
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
 
+import java.io.Serializable;
+
 public class FabricNodeNeo4jRepositoryFactoryBean<T extends Repository<S, ID>, S, ID extends Serializable>
         extends Neo4jRepositoryFactoryBean<T, S, ID> {
 
     @Autowired
-    private FabricAssetService fabricAssetService;
+    private FabricAssetProcessor fabricAssetProcessor;
     private Neo4jMappingContext mappingContext;
 
     public FabricNodeNeo4jRepositoryFactoryBean(final Class<? extends T> repositoryInterface) {
@@ -31,12 +31,12 @@ public class FabricNodeNeo4jRepositoryFactoryBean<T extends Repository<S, ID>, S
     }
 
     /**
-     * @deprecated
      * @param session Neo4j session
      * @return RepositoryFactorySupport
+     * @deprecated
      */
     @Override
     protected RepositoryFactorySupport createRepositoryFactory(final Session session) {
-        return new FabricNodeNeo4jRepositoryFactory(session, this.mappingContext, fabricAssetService);
+        return new FabricNodeNeo4jRepositoryFactory(session, this.mappingContext, fabricAssetProcessor);
     }
 }

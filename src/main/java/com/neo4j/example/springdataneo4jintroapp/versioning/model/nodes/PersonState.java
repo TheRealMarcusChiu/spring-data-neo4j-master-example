@@ -1,9 +1,9 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.State;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.CurrentRelationship;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.HasStateRelationship;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.PreviousRelationship;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.base.State;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.neo4j.ogm.annotation.NodeEntity;

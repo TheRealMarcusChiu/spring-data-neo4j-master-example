@@ -1,11 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.service;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Person;
-import com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

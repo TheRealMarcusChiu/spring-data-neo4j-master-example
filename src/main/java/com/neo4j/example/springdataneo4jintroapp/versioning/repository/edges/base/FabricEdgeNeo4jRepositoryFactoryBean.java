@@ -1,6 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.repository.edges.base;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricAssetService;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricAssetProcessor;
 import org.neo4j.ogm.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mapping.context.MappingContext;
@@ -15,7 +15,7 @@ public class FabricEdgeNeo4jRepositoryFactoryBean<T extends Repository<S, ID>, S
         extends Neo4jRepositoryFactoryBean<T, S, ID> {
 
     @Autowired
-    private FabricAssetService fabricAssetService;
+    private FabricAssetProcessor fabricAssetProcessor;
     private Neo4jMappingContext mappingContext;
 
     public FabricEdgeNeo4jRepositoryFactoryBean(final Class<? extends T> repositoryInterface) {
@@ -31,12 +31,12 @@ public class FabricEdgeNeo4jRepositoryFactoryBean<T extends Repository<S, ID>, S
     }
 
     /**
-     * @deprecated
      * @param session Neo4j session
      * @return RepositoryFactorySupport
+     * @deprecated
      */
     @Override
     protected RepositoryFactorySupport createRepositoryFactory(final Session session) {
-        return new FabricEdgeNeo4jRepositoryFactory(session, this.mappingContext, fabricAssetService);
+        return new FabricEdgeNeo4jRepositoryFactory(session, this.mappingContext, fabricAssetProcessor);
     }
 }

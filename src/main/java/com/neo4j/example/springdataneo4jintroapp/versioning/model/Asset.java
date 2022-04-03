@@ -1,6 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.model;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.FabricKey;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.annotations.FabricKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

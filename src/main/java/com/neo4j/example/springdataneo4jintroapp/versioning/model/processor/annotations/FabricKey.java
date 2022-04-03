@@ -1,4 +1,4 @@
-package com.neo4j.example.springdataneo4jintroapp.versioning.model.util;
+package com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.annotations;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

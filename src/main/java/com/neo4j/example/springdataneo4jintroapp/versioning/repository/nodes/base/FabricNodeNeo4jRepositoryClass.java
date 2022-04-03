@@ -1,10 +1,9 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.base;
 
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Node;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricAssetService;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricKeyGroupValue;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricAssetProcessor;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricKeyGroupValue;
 import com.neo4j.example.springdataneo4jintroapp.versioning.repository.MissingNonNullFabricKeyGroup;
-import lombok.Data;
 import lombok.NonNull;
 import org.neo4j.ogm.session.Session;
 import org.springframework.data.neo4j.repository.support.SimpleNeo4jRepository;
@@ -20,21 +19,21 @@ public class FabricNodeNeo4jRepositoryClass<T extends Node, ID extends Serializa
 
     private final Class<T> nodeClass;
     private final Session session;
-    private final FabricAssetService fabricAssetService;
+    private final FabricAssetProcessor fabricAssetProcessor;
     private final String nodeLabel;
 
     public FabricNodeNeo4jRepositoryClass(final Class<T> nodeClass,
                                           final Session session,
-                                          final FabricAssetService fabricAssetService) {
+                                          final FabricAssetProcessor fabricAssetProcessor) {
         super(nodeClass, session);
         this.nodeClass = nodeClass;
         this.session = session;
-        this.fabricAssetService = fabricAssetService;
-        this.nodeLabel = fabricAssetService.getTopLevelLabel(nodeClass);
+        this.fabricAssetProcessor = fabricAssetProcessor;
+        this.nodeLabel = fabricAssetProcessor.getTopLevelLabel(nodeClass);
     }
 
     public <S extends T> Optional<S> get(final S filterModel) throws MissingNonNullFabricKeyGroup {
-        List<FabricKeyGroupValue> keyGroupValues = fabricAssetService.getKeyGroupsValues(filterModel, true);
+        List<FabricKeyGroupValue> keyGroupValues = fabricAssetProcessor.getKeyGroupsValues(filterModel, true);
         if (keyGroupValues.isEmpty()) {
             throw new MissingNonNullFabricKeyGroup("");
         }
