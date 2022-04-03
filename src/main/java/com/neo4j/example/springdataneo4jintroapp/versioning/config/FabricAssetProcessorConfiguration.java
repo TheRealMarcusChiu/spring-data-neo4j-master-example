@@ -14,11 +14,11 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static com.neo4j.example.springdataneo4jintroapp.versioning.config.EdgeRepoConfiguration.EDGE_ENTITY_BASE_PACKAGE;
-import static com.neo4j.example.springdataneo4jintroapp.versioning.config.NodeRepoConfiguration.NODE_ENTITY_BASE_PACKAGE;
+import static com.neo4j.example.springdataneo4jintroapp.versioning.config.FabricEdgeRepoConfiguration.EDGE_ENTITY_BASE_PACKAGE;
+import static com.neo4j.example.springdataneo4jintroapp.versioning.config.FabricNodeRepoConfiguration.NODE_ENTITY_BASE_PACKAGE;
 
 @Configuration
-public class FabricKeyServiceConfiguration {
+public class FabricAssetProcessorConfiguration {
 
     @Bean
     public FabricAssetProcessor fabricKeyService() {
