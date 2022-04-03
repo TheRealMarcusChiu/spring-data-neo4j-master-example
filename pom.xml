@@ -26,6 +26,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-graphql-java</artifactId>
             <version>1.4.0</version>

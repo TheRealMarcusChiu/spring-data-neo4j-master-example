@@ -1,7 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.repository.edges.base;
 
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Edge;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricKeyService;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricAssetService;
 import org.neo4j.ogm.session.Session;
 import org.springframework.data.neo4j.repository.support.SimpleNeo4jRepository;
 
@@ -12,15 +12,16 @@ public class FabricEdgeNeo4jRepositoryClass<T extends Edge, ID extends Serializa
 
     private final Class<T> domainClass;
     private final Session session;
-    private final FabricKeyService fabricKeyService;
+    private final FabricAssetService fabricAssetService;
 
     public FabricEdgeNeo4jRepositoryClass(final Class<T> domainClass,
                                           final Session session,
-                                          final FabricKeyService fabricKeyService) {
+                                          final FabricAssetService fabricAssetService) {
         super(domainClass, session);
+        fabricAssetService.processEdgeClass(domainClass);
         this.domainClass = domainClass;
         this.session = session;
-        this.fabricKeyService = fabricKeyService;
+        this.fabricAssetService = fabricAssetService;
 //        if (fabricNodeKeyService.isNode(domainClass)) {
 //            this.getFunction = this::getFunctionNode;
 //        } else if (fabricNodeKeyService.isEdge(domainClass)) {

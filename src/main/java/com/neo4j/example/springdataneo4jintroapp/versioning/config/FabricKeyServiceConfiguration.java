@@ -1,6 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.config;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricKeyService;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricAssetService;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.springframework.context.annotation.Bean;
@@ -19,14 +19,14 @@ import static com.neo4j.example.springdataneo4jintroapp.versioning.config.NodeRe
 public class FabricKeyServiceConfiguration {
 
     @Bean
-    public FabricKeyService fabricKeyService() {
+    public FabricAssetService fabricKeyService() {
         Set<Class<?>> nodeClasses = findAllClassesUsingClassLoader(NODE_ENTITY_BASE_PACKAGE).stream()
                 .filter(c -> c.isAnnotationPresent(NodeEntity.class))
                 .collect(Collectors.toSet());
         Set<Class<?>> edgeClasses = findAllClassesUsingClassLoader(EDGE_ENTITY_BASE_PACKAGE).stream()
                 .filter(c -> c.isAnnotationPresent(RelationshipEntity.class))
                 .collect(Collectors.toSet());
-        return new FabricKeyService(nodeClasses, edgeClasses);
+        return new FabricAssetService(nodeClasses, edgeClasses);
     }
 
     private Set<Class<?>> findAllClassesUsingClassLoader(final String packageName) {

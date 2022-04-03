@@ -1,7 +1,10 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning;
 
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Person;
+import com.neo4j.example.springdataneo4jintroapp.versioning.repository.MissingNonNullFabricKeyGroup;
+import com.neo4j.example.springdataneo4jintroapp.versioning.repository.edges.CurrentRelationshipRepository;
 import com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.PersonRepository;
+import com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.PersonStateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,18 +17,23 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 
     @Autowired
     private PersonRepository personRepository;
-//    @Autowired
-//    private PersonStateRepository personStateRepository;
-//    @Autowired
-//    private CurrentRelationshipRepository currentRelationshipRepository;
+    @Autowired
+    private PersonStateRepository personStateRepository;
+    @Autowired
+    private CurrentRelationshipRepository currentRelationshipRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDataNeo4jIntroAppApplication.class, args);
     }
 
     @Override
-    public void run(String... args) {
-        Person p = Person.builder().uuid("turkeylegs").firstName("jiggly puff").build();
+    public void run(String... args) throws MissingNonNullFabricKeyGroup {
+        Person p = Person.builder()
+                .uuid("turkeylegs")
+                .firstName("jiggly puff")
+                .middleName("jo")
+                .lastName("turkey")
+                .build();
 //        PersonState s = PersonState.builder().build();
 //        CurrentRelationship c = CurrentRelationship.builder()
 //                .startNode(p)
@@ -35,9 +43,9 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 //        s.setCurrentRelationship(c);
 //        personEntityRepository.save(p);
 
-        Person p0 = personRepository.save(p);
+//        Person p0 = personRepository.save(p);
         Optional<Person> p1 = personRepository.tester("turkeylegs");
-//        Optional<Person> p2 = personRepository.get(p);
+        Optional<Person> p2 = personRepository.get(p);
 //        currentRelationshipRepository.get(null);
 //
 //        Optional<Person> person1 = personRepository.tester("3fa094d2-20d8-461c-a11d-f3124de1a198");

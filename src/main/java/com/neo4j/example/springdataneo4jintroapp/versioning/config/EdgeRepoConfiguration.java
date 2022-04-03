@@ -12,8 +12,9 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
         repositoryFactoryBeanClass = FabricEdgeNeo4jRepositoryFactoryBean.class,
         basePackages = {EdgeRepoConfiguration.EDGE_REPO_BASE_PACKAGE})
 @EntityScan(
-        basePackages = {EdgeRepoConfiguration.EDGE_ENTITY_BASE_PACKAGE})
+        basePackages = {EdgeRepoConfiguration.EDGE_ENTITY_BASE_PACKAGE, EdgeRepoConfiguration.EDGE_ENTITY_SUPER_BASE_PACKAGE})
 public class EdgeRepoConfiguration {
     public static final String EDGE_ENTITY_BASE_PACKAGE = "com.neo4j.example.springdataneo4jintroapp.versioning.model.edges";
+    public static final String EDGE_ENTITY_SUPER_BASE_PACKAGE = "com.neo4j.example.springdataneo4jintroapp.versioning.model";
     public static final String EDGE_REPO_BASE_PACKAGE = "com.neo4j.example.springdataneo4jintroapp.versioning.repository.edges";
 }

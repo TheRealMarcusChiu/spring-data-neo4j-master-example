@@ -12,8 +12,9 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
         repositoryFactoryBeanClass = FabricNodeNeo4jRepositoryFactoryBean.class,
         basePackages = {NodeRepoConfiguration.NODE_REPO_BASE_PACKAGE})
 @EntityScan(
-        basePackages = {NodeRepoConfiguration.NODE_ENTITY_BASE_PACKAGE})
+        basePackages = {NodeRepoConfiguration.NODE_ENTITY_BASE_PACKAGE, NodeRepoConfiguration.NODE_ENTITY_SUPER_BASE_PACKAGE})
 public class NodeRepoConfiguration {
     public static final String NODE_ENTITY_BASE_PACKAGE = "com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes";
+    public static final String NODE_ENTITY_SUPER_BASE_PACKAGE = "com.neo4j.example.springdataneo4jintroapp.versioning.model";
     public static final String NODE_REPO_BASE_PACKAGE = "com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes";
 }

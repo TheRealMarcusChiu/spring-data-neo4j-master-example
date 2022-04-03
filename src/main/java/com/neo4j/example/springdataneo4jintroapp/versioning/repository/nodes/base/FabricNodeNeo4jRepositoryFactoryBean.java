@@ -2,7 +2,7 @@ package com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.ba
 
 import java.io.Serializable;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricKeyService;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.util.service.FabricAssetService;
 import org.neo4j.ogm.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mapping.context.MappingContext;
@@ -15,7 +15,7 @@ public class FabricNodeNeo4jRepositoryFactoryBean<T extends Repository<S, ID>, S
         extends Neo4jRepositoryFactoryBean<T, S, ID> {
 
     @Autowired
-    private FabricKeyService fabricKeyService;
+    private FabricAssetService fabricAssetService;
     private Neo4jMappingContext mappingContext;
 
     public FabricNodeNeo4jRepositoryFactoryBean(final Class<? extends T> repositoryInterface) {
@@ -37,6 +37,6 @@ public class FabricNodeNeo4jRepositoryFactoryBean<T extends Repository<S, ID>, S
      */
     @Override
     protected RepositoryFactorySupport createRepositoryFactory(final Session session) {
-        return new FabricNodeNeo4jRepositoryFactory(session, this.mappingContext, fabricKeyService);
+        return new FabricNodeNeo4jRepositoryFactory(session, this.mappingContext, fabricAssetService);
     }
 }
