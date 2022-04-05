@@ -21,4 +21,6 @@ public abstract class Asset implements Serializable {
 
     @FabricKey(priority = FabricKey.Priority.HIGHEST)
     private String uuid;
+
+    private Integer index; // used for batch get
 }

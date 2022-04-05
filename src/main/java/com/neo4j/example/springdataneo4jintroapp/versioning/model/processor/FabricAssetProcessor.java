@@ -6,7 +6,7 @@ import com.neo4j.example.springdataneo4jintroapp.versioning.model.Node;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricKeyGroupValue.FabricKeyValue;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.annotations.FabricKey;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -28,6 +28,18 @@ public class FabricAssetProcessor {
                                 final Set<@NonNull Class<? extends Edge>> edgeClasses) {
         nodeClasses.forEach(this::processNodeClass);
         edgeClasses.forEach(this::processEdgeClass);
+    }
+
+    public List<FabricKeyGroupValue> getAllKeyGroups(final @NonNull Class<? extends Asset> clazz) {
+        List<FabricKeyGroup> keyGroups = nodeKeyGroupsMap.get(clazz);
+        return keyGroups.stream().map(FabricAssetProcessor::apply).collect(Collectors.toList());
+    }
+
+    private static FabricKeyGroupValue apply(final FabricKeyGroup kg) {
+        List<FabricKeyValue> l = kg.getFields().stream()
+                .map(f -> FabricKeyValue.builder().propertyName(f.getName()).build())
+                .collect(Collectors.toList());
+        return FabricKeyGroupValue.builder().keyValues(l).build();
     }
 
     public List<FabricKeyGroupValue> getKeyGroupsValues(final Object object, final boolean returnOnlyGroupsWithNonNullValues) {
@@ -113,7 +125,7 @@ public class FabricAssetProcessor {
         return str != null && !str.trim().isEmpty();
     }
 
-    @Data
+    @Getter
     @AllArgsConstructor
     private static class FabricKeyGroup {
         public static final Comparator<FabricKeyGroup> COMPARATOR = Comparator.comparing(FabricKeyGroup::getGroupPriority).reversed();

@@ -29,18 +29,25 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws MissingNonNullFabricKeyGroup {
-        Person p = Person.builder()
-                .uuid("3hello")
-                .firstName("jiggly puff")
-                .middleName("jo")
-                .lastName("turkey")
-                .build();
+        List<Person> persons = List.of(
+                Person.builder().firstName("Marcus1").uuid("1hello").build(),
+                Person.builder().firstName("Unknown").uuid(null).build(),
+                Person.builder().firstName(null).uuid("2hello").build()
+        );
+        personRepository.getAll(persons);
 
-//        Person p0 = personRepository.save(p);
-        Optional<Person> p1 = personRepository.tester("3hello");
-        Optional<Person> p2 = personRepository.get(p);
-        Optional<Person> p4 = personRepository.findAllStatesByUuid("3hello");
-        List<Person> p5s = personRepository.findAllStatesByUuids(List.of("3hello", "4hello", "5hello", "6hello", "7hello", "8hello", "9hello", "10hello"));
+//        Person p = Person.builder()
+//                .uuid("3hello")
+//                .firstName("jiggly puff")
+//                .middleName("jo")
+//                .lastName("turkey")
+//                .build();
+//
+////        Person p0 = personRepository.save(p);
+//        Optional<Person> p1 = personRepository.tester("3hello");
+//        Optional<Person> p2 = personRepository.get(p);
+//        Optional<Person> p4 = personRepository.findAllStatesByUuid("3hello");
+//        List<Person> p5s = personRepository.findAllStatesByUuids(List.of("3hello", "4hello", "5hello", "6hello", "7hello", "8hello", "9hello", "10hello"));
 
         System.exit(0);
     }

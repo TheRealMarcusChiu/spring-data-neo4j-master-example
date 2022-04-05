@@ -6,6 +6,7 @@ import org.neo4j.ogm.session.Session;
 import org.springframework.data.neo4j.repository.support.SimpleNeo4jRepository;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 
 public class FabricEdgeNeo4jRepositoryClass<T extends Edge, ID extends Serializable> extends SimpleNeo4jRepository<T, ID> {
@@ -34,6 +35,10 @@ public class FabricEdgeNeo4jRepositoryClass<T extends Edge, ID extends Serializa
 
     public <S extends T> Optional<S> get(final S filterModel) {
         return Optional.empty();
+    }
+
+    public <S extends T> List<S> getAll(final List<S> filterModels) {
+        return List.of();
     }
 
 //    private <S extends T> Optional<S> getFunctionEdge(final S filterModel) {
