@@ -34,7 +34,7 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
                 Person.builder().firstName("Unknown").uuid(null).build(),
                 Person.builder().firstName(null).uuid("2hello").build()
         );
-        personRepository.getAll(persons);
+        List<Person> personList = personRepository.getAll(persons);
 
 //        Person p = Person.builder()
 //                .uuid("3hello")
