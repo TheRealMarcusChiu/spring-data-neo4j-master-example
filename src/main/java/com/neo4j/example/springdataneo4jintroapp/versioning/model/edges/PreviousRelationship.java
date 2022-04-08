@@ -11,6 +11,8 @@ import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
+import java.time.LocalDateTime;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @RelationshipEntity("PREVIOUS")
@@ -22,4 +24,6 @@ public class PreviousRelationship extends Edge {
     private State startNode;
     @EndNode
     private State endNode;
+
+    private LocalDateTime date;
 }

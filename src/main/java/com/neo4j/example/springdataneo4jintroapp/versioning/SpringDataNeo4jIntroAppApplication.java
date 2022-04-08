@@ -1,40 +1,55 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning;
 
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.ContainsRelationship;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Attribute;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Model;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Person;
 import com.neo4j.example.springdataneo4jintroapp.versioning.repository.MissingNonNullFabricKeyGroup;
-import com.neo4j.example.springdataneo4jintroapp.versioning.repository.edges.CurrentRelationshipRepository;
 import com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.PersonRepository;
-import com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.PersonStateRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.neo4j.example.springdataneo4jintroapp.versioning.service.FabricVersionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
+@RequiredArgsConstructor
 public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 
-    @Autowired
-    private PersonRepository personRepository;
-    @Autowired
-    private PersonStateRepository personStateRepository;
-    @Autowired
-    private CurrentRelationshipRepository currentRelationshipRepository;
+    private final PersonRepository personRepository;
+    private final FabricVersionService fabricVersionService;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDataNeo4jIntroAppApplication.class, args);
     }
 
+    private Model test(String appModId, String schema, String uuid) {
+        Model model = Model.builder().applicationModuleId(appModId).schema(schema).build();
+        ContainsRelationship c1 = ContainsRelationship.builder().startNode(model).endNode(Attribute.builder().value("attribute1").build()).build();
+        ContainsRelationship c2 = ContainsRelationship.builder().startNode(model).endNode(Attribute.builder().value("attribute2").build()).build();
+        ContainsRelationship c3 = ContainsRelationship.builder().startNode(model).endNode(Attribute.builder().value("attribute3").build()).build();
+        model.setContainsRelationships(List.of(c1, c2, c3));
+        model.setUuid(uuid);
+        return model;
+    }
+
     @Override
     public void run(String... args) throws MissingNonNullFabricKeyGroup {
-        List<Person> persons = List.of(
-                Person.builder().firstName("Marcus1").uuid("1hello").build(),
-                Person.builder().firstName("Unknown").uuid(null).build(),
-                Person.builder().firstName(null).uuid("2hello").build()
-        );
-        List<Person> personList = personRepository.getAll(persons);
+//        List<Model> models = List.of(
+//                test("1", "schema1", "mockUuid1"),
+//                test("1", "schema2", "mockUuid2"),
+//                test("1", "schema3", "mockUuid3"));
+//
+//        fabricVersionService.persist(models);
+
+//        List<Person> persons = List.of(
+//                Person.builder().firstName("Marcus1").uuid("1hello").build(),
+//                Person.builder().firstName("Unknown").uuid(null).build(),
+//                Person.builder().firstName(null).uuid("2hello").build()
+//        );
+//        List<Person> personList = personRepository.getAll(persons);
 
 //        Person p = Person.builder()
 //                .uuid("3hello")
@@ -47,7 +62,7 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 //        Optional<Person> p1 = personRepository.tester("3hello");
 //        Optional<Person> p2 = personRepository.get(p);
 //        Optional<Person> p4 = personRepository.findAllStatesByUuid("3hello");
-//        List<Person> p5s = personRepository.findAllStatesByUuids(List.of("3hello", "4hello", "5hello", "6hello", "7hello", "8hello", "9hello", "10hello"));
+        List<Person> p5s = personRepository.findAllStatesByUuids(List.of("3hello", "4hello", "5hello", "6hello", "7hello", "8hello", "9hello", "10hello"));
 
         System.exit(0);
     }

@@ -1,8 +1,8 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.model.edges;
 
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Edge;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.base.Entity;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.base.State;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Attribute;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,15 +16,15 @@ import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@RelationshipEntity("HAS_STATE")
+@RelationshipEntity("CONTAINS")
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HasStateRelationship extends Edge {
+public class ContainsRelationship extends Edge {
     @StartNode
-    private Entity startNode;
+    private Model startNode;
     @EndNode
-    private State endNode;
+    private Attribute endNode;
 
     private LocalDateTime startDate;
     private LocalDateTime endDate;

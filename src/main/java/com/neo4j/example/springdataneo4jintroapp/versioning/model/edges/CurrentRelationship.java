@@ -12,6 +12,8 @@ import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
+import java.time.LocalDateTime;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @RelationshipEntity("CURRENT")
@@ -23,4 +25,6 @@ public class CurrentRelationship extends Edge {
     private Entity startNode;
     @EndNode
     private State endNode;
+
+    private LocalDateTime date;
 }
