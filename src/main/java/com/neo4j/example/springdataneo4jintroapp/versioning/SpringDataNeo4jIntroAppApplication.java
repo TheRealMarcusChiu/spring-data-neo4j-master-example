@@ -1,5 +1,6 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning;
 
+import com.neo4j.example.springdataneo4jintroapp.multidbconnection.MainApplication;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.ContainsRelationship;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Attribute;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Model;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import java.util.List;
 
@@ -22,7 +24,10 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
     private final FabricVersionService fabricVersionService;
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataNeo4jIntroAppApplication.class, args);
+        new SpringApplicationBuilder()
+                .profiles("versioning")
+                .sources(MainApplication.class)
+                .run(args);
     }
 
     private Model test(String appModId, String schema, String uuid) {
