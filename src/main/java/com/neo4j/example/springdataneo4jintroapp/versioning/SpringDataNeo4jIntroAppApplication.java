@@ -26,7 +26,7 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
     public static void main(String[] args) {
         new SpringApplicationBuilder()
                 .profiles("versioning")
-                .sources(MainApplication.class)
+                .sources(SpringDataNeo4jIntroAppApplication.class)
                 .run(args);
     }
 
