@@ -1,4 +1,4 @@
-package com.neo4j.example.springdataneo4jintroapp.testutil;
+package com.neo4j.example.springdataneo4jintroapp.versioning.testutil;
 
 import lombok.extern.slf4j.Slf4j;
 import org.neo4j.ogm.config.Configuration;
@@ -31,7 +31,7 @@ public class NonEmbeddedNeo4jTestConfiguration extends Neo4jTestConfiguration {
                 .uri(neo4jUri)
                 .credentials(neo4jUsername, neo4jPassword)
                 .build();
-        return new SessionFactory(configuration, NEO4J_MODEL_PACKAGE);
+        return new SessionFactory(configuration, NEO4J_ENTITY_BASE_PACKAGES);
     }
 
     @Bean

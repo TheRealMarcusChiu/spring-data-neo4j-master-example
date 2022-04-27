@@ -1,8 +1,8 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.ContainsRelationship;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.base.Entity;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.annotations.FabricKey;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.ContainsRelationship;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.neo4j.ogm.annotation.NodeEntity;

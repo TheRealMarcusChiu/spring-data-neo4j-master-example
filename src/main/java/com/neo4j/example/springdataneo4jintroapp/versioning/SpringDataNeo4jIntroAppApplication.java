@@ -1,16 +1,14 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning;
 
-import com.neo4j.example.springdataneo4jintroapp.multidbconnection.MainApplication;
+import com.neo4j.example.springdataneo4jintroapp.versioning.service.FabricVersionService;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.edges.ContainsRelationship;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Attribute;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Model;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Person;
 import com.neo4j.example.springdataneo4jintroapp.versioning.repository.MissingNonNullFabricKeyGroup;
 import com.neo4j.example.springdataneo4jintroapp.versioning.repository.nodes.PersonRepository;
-import com.neo4j.example.springdataneo4jintroapp.versioning.service.FabricVersionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -56,18 +54,18 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 //        );
 //        List<Person> personList = personRepository.getAll(persons);
 
-//        Person p = Person.builder()
-//                .uuid("3hello")
-//                .firstName("jiggly puff")
-//                .middleName("jo")
-//                .lastName("turkey")
-//                .build();
-//
-////        Person p0 = personRepository.save(p);
+        Person p = Person.builder()
+                .uuid("3hello")
+                .firstName("jiggly puff")
+                .middleName("jo")
+                .lastName("turkey")
+                .build();
+
+        Person p0 = personRepository.save(p);
 //        Optional<Person> p1 = personRepository.tester("3hello");
 //        Optional<Person> p2 = personRepository.get(p);
 //        Optional<Person> p4 = personRepository.findAllStatesByUuid("3hello");
-        List<Person> p5s = personRepository.findAllStatesByUuids(List.of("3hello", "4hello", "5hello", "6hello", "7hello", "8hello", "9hello", "10hello"));
+//        List<Person> p5s = personRepository.findAllStatesByUuids(List.of("3hello", "4hello", "5hello", "6hello", "7hello", "8hello", "9hello", "10hello"));
 
         System.exit(0);
     }

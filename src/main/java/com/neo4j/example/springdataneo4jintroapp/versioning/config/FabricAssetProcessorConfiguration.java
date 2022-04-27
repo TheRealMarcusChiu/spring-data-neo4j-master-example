@@ -1,7 +1,7 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.config;
 
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.Asset;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Edge;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.Asset;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Node;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.processor.FabricAssetProcessor;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -15,14 +15,13 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.neo4j.example.springdataneo4jintroapp.versioning.config.FabricEdgeRepoConfiguration.EDGE_ENTITY_BASE_PACKAGE;
-import static com.neo4j.example.springdataneo4jintroapp.versioning.config.FabricNodeRepoConfiguration.NODE_ENTITY_BASE_PACKAGE;
 
 @Configuration
 public class FabricAssetProcessorConfiguration {
 
     @Bean
     public FabricAssetProcessor fabricKeyService() {
-        Set<Class<? extends Node>> nodeClasses = findAllClasses(NODE_ENTITY_BASE_PACKAGE, Node.class,
+        Set<Class<? extends Node>> nodeClasses = findAllClasses(FabricNodeRepoConfiguration.NODE_ENTITY_BASE_PACKAGE, Node.class,
                 clazz -> clazz.isAnnotationPresent(NodeEntity.class));
         Set<Class<? extends Edge>> edgeClasses = findAllClasses(EDGE_ENTITY_BASE_PACKAGE, Edge.class,
                 clazz -> clazz.isAnnotationPresent(RelationshipEntity.class));

@@ -1,8 +1,8 @@
 package com.neo4j.example.springdataneo4jintroapp.versioning.model.edges;
 
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.Edge;
-import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Attribute;
 import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Model;
+import com.neo4j.example.springdataneo4jintroapp.versioning.model.nodes.Attribute;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

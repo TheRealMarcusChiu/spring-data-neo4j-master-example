@@ -1,4 +1,4 @@
-package com.neo4j.example.springdataneo4jintroapp.testutil;
+package com.neo4j.example.springdataneo4jintroapp.versioning.testutil;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

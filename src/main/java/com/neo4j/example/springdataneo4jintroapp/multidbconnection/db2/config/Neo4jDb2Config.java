@@ -2,7 +2,6 @@ package com.neo4j.example.springdataneo4jintroapp.multidbconnection.db2.config;
 
 import com.neo4j.example.springdataneo4jintroapp.multidbconnection.FabricNeo4jProperties;
 import org.neo4j.ogm.session.SessionFactory;
-import org.springframework.boot.autoconfigure.data.neo4j.Neo4jProperties;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
