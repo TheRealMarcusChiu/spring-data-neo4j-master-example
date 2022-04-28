@@ -12,12 +12,13 @@ import org.neo4j.ogm.annotation.Relationship;
 import static org.neo4j.ogm.annotation.Relationship.INCOMING;
 import static org.neo4j.ogm.annotation.Relationship.OUTGOING;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@NodeEntity("PersonState")
+@Getter
+@Setter(AccessLevel.PACKAGE)
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@NodeEntity("PersonState")
 public class PersonState extends State {
 
     private String firstName;

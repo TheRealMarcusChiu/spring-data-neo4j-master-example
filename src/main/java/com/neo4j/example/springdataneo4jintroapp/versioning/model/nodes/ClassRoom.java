@@ -11,12 +11,13 @@ import java.util.List;
 
 import static org.neo4j.ogm.annotation.Relationship.INCOMING;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@NodeEntity("ClassRoom")
+@Getter
+@Setter(AccessLevel.PACKAGE)
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@NodeEntity("ClassRoom")
 public class ClassRoom extends Node {
     private String subject;
 

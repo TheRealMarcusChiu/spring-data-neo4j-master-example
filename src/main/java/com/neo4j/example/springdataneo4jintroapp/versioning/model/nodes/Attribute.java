@@ -9,13 +9,13 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import static org.neo4j.ogm.annotation.Relationship.INCOMING;
 
-@NodeEntity("Attribute")
-@Data
+@Getter
+@Setter(AccessLevel.PACKAGE)
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NodeEntity("Attribute")
 public class Attribute extends Entity {
     private String value;
 

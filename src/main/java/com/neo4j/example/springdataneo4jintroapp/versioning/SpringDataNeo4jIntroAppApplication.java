@@ -13,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -28,18 +30,13 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
                 .run(args);
     }
 
-    private Model test(String appModId, String schema, String uuid) {
-        Model model = Model.builder().applicationModuleId(appModId).schema(schema).build();
-        ContainsRelationship c1 = ContainsRelationship.builder().startNode(model).endNode(Attribute.builder().value("attribute1").build()).build();
-        ContainsRelationship c2 = ContainsRelationship.builder().startNode(model).endNode(Attribute.builder().value("attribute2").build()).build();
-        ContainsRelationship c3 = ContainsRelationship.builder().startNode(model).endNode(Attribute.builder().value("attribute3").build()).build();
-        model.setContainsRelationships(List.of(c1, c2, c3));
-        model.setUuid(uuid);
-        return model;
-    }
-
     @Override
     public void run(String... args) throws MissingNonNullFabricKeyGroup {
+        Iterable<Person> ps = personRepository.findAll();
+        List<Person> pss = StreamSupport.stream(ps.spliterator(), false)
+                .collect(Collectors.toList());
+
+        System.out.println("xc");
 //        List<Model> models = List.of(
 //                test("1", "schema1", "mockUuid1"),
 //                test("1", "schema2", "mockUuid2"),
@@ -55,10 +52,10 @@ public class SpringDataNeo4jIntroAppApplication implements CommandLineRunner {
 //        List<Person> personList = personRepository.getAll(persons);
 
         Person p = Person.builder()
-                .uuid("3hello")
-                .firstName("jiggly puff")
-                .middleName("jo")
-                .lastName("turkey")
+                .uuid("w")
+                .firstName("w")
+                .middleName("w")
+                .lastName("w")
                 .build();
 
         Person p0 = personRepository.save(p);

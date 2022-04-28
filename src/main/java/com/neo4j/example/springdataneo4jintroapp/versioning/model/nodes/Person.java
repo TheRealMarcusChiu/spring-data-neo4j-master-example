@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NodeEntity("Person")
-@Data
+@Getter
+@Setter(AccessLevel.PACKAGE)
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class Person extends Entity {
@@ -46,4 +46,5 @@ public class Person extends Entity {
     @ToString.Exclude
     @Relationship("ATTENDS")
     private List<AttendsRelationship> attendsRelationships = new ArrayList<>();
+
 }

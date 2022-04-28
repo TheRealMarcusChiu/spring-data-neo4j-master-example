@@ -13,13 +13,13 @@ import java.util.List;
 
 import static org.neo4j.ogm.annotation.Relationship.OUTGOING;
 
-@NodeEntity("Model")
-@Data
+@Getter
+@Setter(AccessLevel.PACKAGE)
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@NodeEntity("Model")
 public class Model extends Entity {
 
     @FabricKey(priority = FabricKey.Priority.DEFAULT)
